@@ -12,6 +12,7 @@ import javax.swing.JFileChooser;
 
 import model.Directory;
 import model.Node;
+import visitor.CollectInfo;
 //import visitor.CollectInfo;
 
 public class Select implements ActionListener {
@@ -42,11 +43,11 @@ public class Select implements ActionListener {
 			Node base = new Directory(name);
 
 			// create visitor
-//			CollectInfo visitor = new CollectInfo();
+			CollectInfo visitor = new CollectInfo();
 			
 			// execute visitor and get imports results
-//			base.accept(visitor);
-//			imports = visitor.iterator();
+			base.accept(visitor);
+			imports = visitor.iterator();
 			
 			// advise obsevers that new results are available
 	        pcs.firePropertyChange(null, null, null);
