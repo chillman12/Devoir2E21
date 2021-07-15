@@ -10,16 +10,15 @@ import java.util.List;
 
 public class XMLHandler extends Handler {
 
-    Command command;
     List<String> list = new ArrayList<>();
 
     @Override
     public void handleRequest(Node node) {
         if (applyRules(node)) {
             Factory factory = Factory.get();
-            command = factory.create(Factory.ID.XML, node.getFile());
+            Command command = factory.create(Factory.ID.XML, node.getFile());
+            command.add("    F: " + node.getFile().getName() + "\n");
             command.execute();
-            list.add("    F: " + node.getFile().getName() + "\n");
             list.addAll(command);
         }
     }

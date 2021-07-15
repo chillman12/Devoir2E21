@@ -17,8 +17,8 @@ public class JavaHandler extends Handler {
         if (applyRules(node)) {
             Factory factory = Factory.get();
             Command command = factory.create(Factory.ID.JAVA, node.getFile());
+            command.add("    F: " + node.getFile().getName() + "\n");
             command.execute();
-            list.add("    F: " + node.getFile().getName() + "\n");
             list.addAll(command);
         }
         else
